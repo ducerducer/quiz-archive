@@ -18,10 +18,6 @@
 
 ---
 
-## 🔐 使用说明
-
-访问 [https://ducerducer.github.io/quiz-archive/](https://ducerducer.github.io/quiz-archive/) 后输入密码 `5love%811217` 即可进入练习页面。
-
 ## ✨ 功能特点
 
 | 功能 | 说明 |
