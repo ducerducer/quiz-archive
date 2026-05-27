@@ -98,11 +98,12 @@
   <p>七年级下册语文 · 全册练习</p>
   <div class="pwd-box">
     <input type="password" id="pwdInput" placeholder="输入密码" autofocus>
+    <input type="text" id="keyInput" placeholder="DeepSeek API Key（留空用已保存的）" style="margin-top:8px;width:100%;padding:10px;border:1px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(255,255,255,.15);color:#fff;font-size:14px;outline:none;box-sizing:border-box">
     <button onclick="checkPwd()">确定</button>
   </div>
   <div class="pwd-err" id="pwdErr">密码错误，请重试</div>
 </div>
-<script>function checkPwd(){var p=document.getElementById('pwdInput').value;if(p==='5love%121220'){document.getElementById('pwdOverlay').style.display='none';}else{document.getElementById('pwdErr').style.display='block';}}document.getElementById('pwdInput').addEventListener('keydown',function(e){if(e.key==='Enter')checkPwd();});</script>
+<script>var savedKey=localStorage.getItem('ds_key');if(savedKey){document.getElementById('keyInput').placeholder='已保存 Key，重新输入可替换';}function checkPwd(){var p=document.getElementById('pwdInput').value;if(p==='5love%121220'){var k=document.getElementById('keyInput').value.trim();if(k){localStorage.setItem('ds_key',k);}document.getElementById('pwdOverlay').style.display='none';}else{document.getElementById('pwdErr').style.display='block';}}document.getElementById('pwdInput').addEventListener('keydown',function(e){if(e.key==='Enter')checkPwd();});document.getElementById('keyInput').addEventListener('keydown',function(e){if(e.key==='Enter')checkPwd();});</script>
 <div id="pageMenu">
 <div class="banner" style="background:linear-gradient(135deg,#c0392b,#8e44ad)">
 <h1>📚 七年级下册 · 语文</h1>
@@ -2713,7 +2714,7 @@
 </div>
 
 <script>
-const API_KEY = "sk-f285ec5a140d4c9c821e67ef007c54d8";
+const API_KEY = localStorage.getItem('ds_key') || '';
 const API_URL = "https://api.deepseek.com/chat/completions";
 const MODEL = "deepseek-v4-flash";
 const APP={data:{
